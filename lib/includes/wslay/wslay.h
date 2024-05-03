@@ -79,6 +79,14 @@ enum wslay_io_flags {
   WSLAY_MSG_MORE = 1
 };
 
+#ifdef _MSC_VER
+#ifdef  _WIN64
+typedef int64_t ssize_t;
+#else
+typedef int32_t ssize_t;
+#endif
+#endif
+
 /*
  * Callback function used by wslay_frame_send() function when it needs
  * to send data. The implementation of this function must send at most
